@@ -1,20 +1,9 @@
-import React from "react";
-import { render } from "react-dom";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  useMutation,
-  gql
-} from "@apollo/client";
+import React from 'react';
+import { useQuery, gql, NetworkStatus, useMutation } from '@apollo/client';
 
-const client = new ApolloClient({
-  uri: "https://sxewr.sse.codesandbox.io/",
-  cache: new InMemoryCache()
-});
 
-const GET_TODOS = gql`
+const Query = () => {
+  const GET_TODOS = gql`
   {
     todos {
       id
@@ -122,17 +111,5 @@ function AddTodo() {
     </div>
   );
 }
-
-function App() {
-  return (
-    <ApolloProvider client={client}>
-      <div>
-        <h2>Building Mutation components <span></span>🚀</h2>
-        <AddTodo />
-        <Todos />
-      </div>
-    </ApolloProvider>
-  );
 }
-
-render(<App />, document.getElementById("root"));
+export default Query;
